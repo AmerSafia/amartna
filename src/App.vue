@@ -1,32 +1,46 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+<template >
+  <div>
+    <Navbar :nav="nav">
+      <v-main>
+        <router-view />
+      </v-main>
+    </Navbar>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<script>
+import "./assets/global.css";
+import Navbar from "./components/Navbar.vue";
+export default {
+  name: "App",
+  data() {
+    return {
+      nav: [
+        {
+          name: "سكان العمارة",
+          url: "populations",
+          icon: "far fa-building",
+          id: 1,
+        },
+        { name: "الدفعات", url: "payments", icon: "fas fa-file-alt", id: 2 },
+        { name: "المصاريف", url: "Expenses", icon: "mdi-cash-register", id: 3 },
+        {
+          name: "تسجيل دفعة",
+          url: "addpayment",
+          icon: "fas fa-file-invoice-dollar",
+          id: 4,
+        },
+        {
+          name: "تسجيل صرف",
+          url: "addexpenses",
+          icon: "fas fa-file-invoice-dollar",
+          id: 5,
+        },
+      ],
+    };
+  },
+  components: {
+    Navbar,
+  },
+};
+</script>
