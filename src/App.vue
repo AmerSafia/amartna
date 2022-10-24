@@ -26,7 +26,7 @@ export default {
           name: "سكان العمارة",
           url: "populations",
           icon: "far fa-building",
-          id: 1,
+          id: 6,
         },
         { name: "الدفعات", url: "payments", icon: "fas fa-file-alt", id: 2 },
         { name: "المصاريف", url: "Expenses", icon: "mdi-cash-register", id: 3 },

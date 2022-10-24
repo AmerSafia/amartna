@@ -6,6 +6,7 @@
       :to="item.url"
       class="home-card p-0"
     >
+    
       <v-list-item-icon>
         <v-icon color="white">{{ item.icon }}</v-icon>
       </v-list-item-icon>
@@ -17,20 +18,11 @@
 </template>
 
 <script>
-//  <a :href="item.url">
-//     <div class="home-card elevation-15">{{ item.name }}</div></a
-//   >
 export default {
   name: "Home",
   data() {
     return {
       nav: [
-        {
-          name: "الصفحة الرئيسية",
-          url: "/",
-          icon: "mdi-home",
-          id: 1,
-        },
         {
           name: "سكان العمارة",
           url: "populations",
