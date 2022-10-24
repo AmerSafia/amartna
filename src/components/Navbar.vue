@@ -53,5 +53,4 @@ export default {
 .deActive {
   color: #fff;
 }
-
 </style>
