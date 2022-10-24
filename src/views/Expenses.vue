@@ -17,7 +17,6 @@
 <script>
 import Card from "../components/Card.vue";
 import { client } from "../lib/client";
-
 export default {
   name: "expenses",
   components: {

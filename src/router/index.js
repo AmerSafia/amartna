@@ -26,20 +26,20 @@ const routes = [
     path: "/expenses",
     name: "expenses",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Expenses.vue"),
+      import(/* webpackChunkName: "about" */ "../views/expenses.vue"),
   },
   {
-    path: "/addpayment",
-    name: "addpayment",
+    path: "/managePayments",
+    name: "managePayments",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AddPayment.vue"),
+      import(/* webpackChunkName: "about" */ "../views/managePayments.vue"),
   },
   {
-    path: "/addexpenses",
-    name: "addexpenses",
+    path: "/manageExpenses",
+    name: "manageExpenses",
 
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AddExpenses.vue"),
+      import(/* webpackChunkName: "about" */ "../views/manageExpenses.vue"),
   },
 ];
 

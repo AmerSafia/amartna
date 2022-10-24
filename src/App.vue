@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       nav: [
-          {
+        {
           name: "الصفحة الرئيسية",
           url: "/",
           icon: "mdi-home",
@@ -31,14 +31,14 @@ export default {
         { name: "الدفعات", url: "payments", icon: "fas fa-file-alt", id: 2 },
         { name: "المصاريف", url: "Expenses", icon: "mdi-cash-register", id: 3 },
         {
-          name: "تسجيل دفعة",
-          url: "addpayment",
+          name: "ادارة الدفعات",
+          url: "managePayments",
           icon: "fas fa-file-invoice-dollar",
           id: 4,
         },
         {
-          name: "تسجيل صرف",
-          url: "addexpenses",
+          name: "ادارة المصاريف",
+          url: "manageExpenses",
           icon: "fas fa-file-invoice-dollar",
           id: 5,
         },
