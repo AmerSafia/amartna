@@ -16,6 +16,12 @@ export default {
   data() {
     return {
       nav: [
+          {
+          name: "الصفحة الرئيسية",
+          url: "/",
+          icon: "mdi-home",
+          id: 1,
+        },
         {
           name: "سكان العمارة",
           url: "populations",
