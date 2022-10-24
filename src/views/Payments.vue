@@ -2,13 +2,13 @@
   <div>
     <h1 class="font-weight-black mb-4 text-center">الدفعات</h1>
     <div class="cards">
-      <Card v-for="card of cards" :card="card" :key="card.id">
-        <v-card-title class="text-h5"> {{ card.name }}</v-card-title>
+      <Card v-for="item of payment" :key="item.id">
+        <v-card-title class="text-h5"> {{ item.name }}</v-card-title>
         <v-card-subtitle>
-          <div>تاريخ الدفعة: {{ card.date }}</div>
-          <div>شقة رقم : {{ card.apartmentNum }}</div>
-          <div>التفاصيل: {{ card.desc }}</div>
-          <div>المبلغ: {{ card.pay }} دينار</div>
+          <div>تاريخ الدفعة: {{ item.date }}</div>
+          <div>شقة رقم : {{ item.numApartment }}</div>
+          <div>المبلغ: {{ item.amount }} دينار</div>
+          <div>التفاصيل: {{ item.description }}</div>
         </v-card-subtitle>
       </Card>
     </div>
@@ -16,6 +16,8 @@
 </template>
 <script>
 import Card from "../components/Card.vue";
+import { client } from "../lib/client";
+
 export default {
   name: "payments",
   components: {
@@ -23,44 +25,17 @@ export default {
   },
   data() {
     return {
-      cards: [
-        {
-          name: "عامر حسين صافية",
-          date: "10/10/2020",
-          desc: "دفعة عن شهر 10",
-          apartmentNum: 12,
-          pay: 12,
-        },
-        {
-          name: "عامر حسين صافية",
-          date: "10/10/2020",
-          desc: "دفعة عن شهر 10",
-          apartmentNum: 12,
-          pay: 12,
-        },
-        {
-          name: "عامر حسين صافية",
-          date: "10/10/2020",
-          desc: "دفعة عن شهر 10",
-          apartmentNum: 12,
-          pay: 12,
-        },
-        {
-          name: "عامر حسين صافية",
-          date: "10/10/2020",
-          desc: "دفعة عن شهر 10",
-          apartmentNum: 12,
-          pay: 12,
-        },
-        {
-          name: "عامر حسين صافية",
-          date: "10/10/2020",
-          desc: "دفعة عن شهر 10",
-          apartmentNum: 12,
-          pay: 12,
-        },
-      ],
+      payment: [],
     };
+  },
+  async created() {
+    await this.getPayments();
+  },
+  methods: {
+    async getPayments() {
+      const query = `*[_type=="payment"]`;
+      this.payment = await client.fetch(query);
+    },
   },
 };
 </script>

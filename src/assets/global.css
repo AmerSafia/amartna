@@ -8,8 +8,9 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  border-radius: 0 !important;
 }
-body{
+body {
   width: 100% !important;
 }
 .cards {
@@ -18,10 +19,11 @@ body{
   gap: 0.5rem;
 }
 
-.direction-ltr{
+.direction-ltr {
   direction: ltr !important;
 }
-.v-toolbar__content, .v-toolbar__extension {
+.v-toolbar__content,
+.v-toolbar__extension {
   justify-content: space-between !important;
 }
 @media screen and (max-width: 600px) {
@@ -32,4 +34,3 @@ body{
     margin: 5px 0;
   }
 }
-
