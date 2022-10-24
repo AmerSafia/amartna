@@ -1,6 +1,6 @@
 export default {
-    name: "payment",
-    title: "Payment",
+    name: "expense",
+    title: "Expense",
     type: "document",
     fields: [
         {
@@ -12,11 +12,6 @@ export default {
             name: "date",
             title: "Date",
             type: "date",
-        },
-        {
-            name: "numApartment",
-            title: "NumApartment",
-            type: "number",
         },
         {
             name: "amount",

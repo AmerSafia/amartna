@@ -34,7 +34,6 @@ export default {
     async getPopulations() {
       const query = `*[_type=="population"]`;
       this.population = await client.fetch(query);
-      console.log(this.population);
     },
   },
 };

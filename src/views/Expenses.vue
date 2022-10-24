@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1 class="font-weight-black mb-4 text-center">مصاريف </h1>
+    <h1 class="font-weight-black mb-4 text-center">مصاريف</h1>
     <div class="cards">
-      <Card v-for="pay of payments" :card="pay" :key="pay.id">
-        <v-card-title class="text-h5"> {{ pay.name }}</v-card-title>
+      <Card v-for="item of expense" :key="item.id">
+        <v-card-title class="text-h5"> {{ item.name }}</v-card-title>
         <v-card-subtitle>
-          <div>دفعة: {{ pay.price }} دينار</div>
-          <div>تاريخ : {{ pay.date }}</div>
-          <div>التفاصيل: {{ pay.desc }}</div>
+          <div>المبلغ: {{ item.amount }} دينار</div>
+          <div>تاريخ : {{ item.date }}</div>
+          <div>التفاصيل: {{ item.description }}</div>
         </v-card-subtitle>
       </Card>
     </div>
@@ -16,6 +16,8 @@
 
 <script>
 import Card from "../components/Card.vue";
+import { client } from "../lib/client";
+
 export default {
   name: "expenses",
   components: {
@@ -23,15 +25,17 @@ export default {
   },
   data() {
     return {
-      payments: [
-        {
-          name: "صيانة مصعد",
-          desc: "صيانة مصعد",
-          price: 75,
-          date: "20/10/2020",
-        },
-      ],
+      expense: [],
     };
+  },
+  async created() {
+    await this.getExpense();
+  },
+  methods: {
+    async getExpense() {
+      const query = `*[_type=="expense"]`;
+      this.expense = await client.fetch(query);
+    },
   },
 };
 </script>
