@@ -3,9 +3,9 @@
     <v-card class="mx-auto" height="100%" min-height="100vh" width="100%">
       <v-app-bar color="deep-purple" dark>
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-        <v-toolbar-title>
-          <v-list-item to="/" active-class="deActive"> عمارتنا </v-list-item></v-toolbar-title
-        >
+        <v-toolbar-title > 
+          <v-list-item to="/" active-class="deActive"> عمارتنا </v-list-item>
+        </v-toolbar-title>
       </v-app-bar>
 
       <v-navigation-drawer v-model="drawer" absolute temporary>
@@ -50,7 +50,8 @@ export default {
 .v-list-item__icon {
   margin: auto;
 }
-.deActive{
+.deActive {
   color: #fff;
 }
+
 </style>

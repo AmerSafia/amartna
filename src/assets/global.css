@@ -22,6 +22,9 @@ body{
 .direction-ltr{
   direction: ltr !important;
 }
+.v-toolbar__content, .v-toolbar__extension {
+  justify-content: space-between !important;
+}
 @media screen and (max-width: 600px) {
   .cards {
     grid-template-columns: 1fr;
