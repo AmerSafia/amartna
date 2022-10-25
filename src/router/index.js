@@ -26,7 +26,7 @@ const routes = [
     path: "/expenses",
     name: "expenses",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/expenses.vue"),
+      import(/* webpackChunkName: "about" */ "../views/Expenses.vue"),
   },
   {
     path: "/managePayments",
