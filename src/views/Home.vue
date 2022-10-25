@@ -30,7 +30,7 @@ export default {
           id: 1,
         },
         { name: "الدفعات", url: "payments", icon: "fas fa-file-alt", id: 2 },
-        { name: "المصاريف", url: "Expenses", icon: "mdi-cash-register", id: 3 },
+        { name: "المصاريف", url: "expenses", icon: "mdi-cash-register", id: 3 },
         {
           name: "ادارة الدفعات",
           url: "managePayments",
