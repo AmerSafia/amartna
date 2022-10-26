@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="font-weight-black mb-4 text-center">ادارة الدفعات</h1>
+
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="primary" dark v-bind="attrs" v-on="on">
@@ -95,76 +96,41 @@
       </v-card>
     </v-dialog>
 
-    <v-flex xs12>
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-      <v-data-table
-        :loading="isLoading"
-        :headers="headers"
-        :items="payments"
-        :search="search"
-        v-model="selected"
-        show-select
-      >
-        <template v-slot:items="props">
-          <tr :key="props.item.id">
-            <td>
-              <v-checkbox
-                v-model="props.selected"
-                primary
-                hide-details
-              ></v-checkbox>
-            </td>
-            <td>{{ props.item.name }}</td>
-            <td>{{ props.item.date }}</td>
-            <td>{{ props.item.amount }}</td>
-            <td>delete</td>
-          </tr>
-        </template>
-      </v-data-table>
-    </v-flex>
+
+    <crud-table :data="payments" :headers="headers" />
   </div>
 </template>
 
 <script>
+import CrudTable from '../components/CrudTable.vue';
 import { client } from "../lib/client";
 export default {
+  components: { CrudTable },
   name: "managePayments",
   data() {
     return {
       menu: false,
       modal: false,
-      menu2: false,
       dialog: false,
-      isLoading: false,
-      search: '',
-      selected: [],
       payments: [],
       payment: {
         date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
           .toISOString()
           .substr(0, 10),
       },
-     
     };
   },
   methods: {
     savePayment() {
       this.dialog = false;
-      console.log(this.payment);
     },
     async getPayments() {
-      this.isLoading = true
+      this.isLoading = true;
       const query = `*[_type=="payment"]`;
       this.payments = await client.fetch(query);
-      this.isLoading = false
-
+      this.isLoading = false;
     },
+  
   },
   async created() {
     await this.getPayments();
@@ -189,6 +155,7 @@ export default {
         },
         { text: "المبلغ", value: "amount", sortable: false },
         { text: "التفاصيل", value: "description", sortable: false },
+        { text: "", value: "actions", sortable: false },
       ];
     },
   },

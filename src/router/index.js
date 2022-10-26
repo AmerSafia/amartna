@@ -28,6 +28,13 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Expenses.vue"),
   },
+  
+  {
+    path: "/managePopulation",
+    name: "managePayments",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/managePopulation.vue"),
+  },
   {
     path: "/managePayments",
     name: "managePayments",
