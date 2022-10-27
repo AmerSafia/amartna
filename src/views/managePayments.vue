@@ -63,7 +63,7 @@
                 <v-text-field
                   type="number"
                   label="رقم الشقة"
-                  v-model="payment.NumPartment"
+                  v-model.number="payment.numApartment"
                   name="الاسم"
                 ></v-text-field>
               </v-flex>
@@ -72,7 +72,7 @@
                 <v-text-field
                   type="number"
                   label="المبلغ"
-                  v-model="payment.amount"
+                  v-model.number="payment.amount"
                   name="الاسم"
                 ></v-text-field>
               </v-flex>
@@ -96,13 +96,16 @@
       </v-card>
     </v-dialog>
 
-
-    <crud-table :data="payments" :headers="headers" />
+    <crud-table
+      :data="payments"
+      :headers="headers"
+      @handleEdit="editPayments"
+    />
   </div>
 </template>
 
 <script>
-import CrudTable from '../components/CrudTable.vue';
+import CrudTable from "../components/CrudTable.vue";
 import { client } from "../lib/client";
 export default {
   components: { CrudTable },
@@ -121,16 +124,29 @@ export default {
     };
   },
   methods: {
-    savePayment() {
-      this.dialog = false;
-    },
     async getPayments() {
       this.isLoading = true;
       const query = `*[_type=="payment"]`;
       this.payments = await client.fetch(query);
       this.isLoading = false;
     },
-  
+    editPayments(item) {
+      this.payment = item;
+      this.dialog = true;
+      console.log(item);
+    },
+    async savePayment() {
+      try {
+        const row = { _type: "payment", ...this.payment };
+        await client.create(row);
+        this.payments = [...this.payments, this.payment];
+        this.payment = {};
+        this.dialog = false;
+      } catch (error) {
+        console.log(error);
+        this.dialog = false;
+      }
+    },
   },
   async created() {
     await this.getPayments();

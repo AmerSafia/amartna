@@ -27,7 +27,7 @@
                 <v-text-field
                   type="number"
                   label="رقم الشقة"
-                  v-model.number="entity.NumPartment"
+                  v-model.number="entity.numApartment"
                   name="الاسم"
                 ></v-text-field>
               </v-flex>
@@ -35,7 +35,7 @@
               <v-flex md6 class="pr-1">
                 <v-text-field
                   type="number"
-                  label="المبلغ"
+                  label="رقم الهاتف"
                   v-model.number="entity.phone"
                   name="الاسم"
                 ></v-text-field>
@@ -59,7 +59,11 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <crud-table :data="population" :headers="headers" />
+    <crud-table
+      :data="population"
+      :headers="headers"
+      @handleEdit="editPopulation"
+    />
   </div>
 </template>
 
@@ -84,7 +88,22 @@ export default {
       const query = `*[_type=="population"]`;
       this.population = await client.fetch(query);
     },
-    saveEntity() {},
+    async saveEntity() {
+      try {
+        const row = { _type: "population", ...this.entity };
+        await client.create(row);
+        this.population = [...this.population, this.entity];
+        this.dialog = false;
+      } catch (error) {
+        console.log(error);
+        this.dialog = false;
+      }
+    },
+    editPopulation(item) {
+      this.entity = item;
+      this.dialog = true;
+      console.log(item);
+    },
   },
   computed: {
     headers() {

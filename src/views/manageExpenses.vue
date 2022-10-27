@@ -24,27 +24,23 @@
                   ref="menu"
                   v-model="menu"
                   :close-on-content-click="false"
-                  :return-value.sync="expense.dateExpense"
+                  :return-value.sync="expense.date"
                   transition="scale-transition"
                   offset-y
                   min-width="auto"
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <v-text-field
-                      v-model="expense.dateExpense"
+                      v-model="expense.date"
                       label=" تاريخ الصرف"
                       prepend-icon="mdi-calendar"
                       readonly
                       v-bind="attrs"
                       v-on="on"
-                      name="dateExpense"
+                      name="date"
                     ></v-text-field>
                   </template>
-                  <v-date-picker
-                    v-model="expense.dateExpense"
-                    no-title
-                    scrollable
-                  >
+                  <v-date-picker v-model="expense.date" no-title scrollable>
                     <v-spacer></v-spacer>
                     <v-btn text color="primary" @click="menu = false">
                       Cancel
@@ -52,7 +48,7 @@
                     <v-btn
                       text
                       color="primary"
-                      @click="$refs.menu.save(expense.dateExpense)"
+                      @click="$refs.menu.save(expense.date)"
                     >
                       OK
                     </v-btn>
@@ -86,7 +82,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <crud-table :data="expenses" :headers="headers" />
+    <crud-table :data="expenses" :headers="headers" @handleEdit="editExpense" />
   </div>
 </template>
 
@@ -102,9 +98,7 @@ export default {
       dialog: false,
       expenses: [],
       expense: {
-        dateExpense: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
+        date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
           .toISOString()
           .substr(0, 10),
       },
@@ -114,14 +108,27 @@ export default {
     await this.getExpense();
   },
   methods: {
-    saveExpense() {
-      // console.log(this.expense, "expense");
-    },
     async getExpense() {
       const query = `*[_type=="expense"]`;
       this.expenses = await client.fetch(query);
     },
-
+    editExpense(item) {
+      this.expense = item;
+      this.dialog = true;
+      console.log(item);
+    },
+    async saveExpense() {
+      try {
+        const row = { _type: "expense", ...this.expense };
+        await client.create(row);
+        this.expenses = [...this.expenses, this.expense];
+        this.expense = {};
+        this.dialog = false;
+      } catch (error) {
+        console.log(error);
+        this.dialog = false;
+      }
+    },
   },
   computed: {
     headers() {
