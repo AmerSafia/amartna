@@ -48,6 +48,8 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/manageExpenses.vue"),
   },
+  { path: '(.*)', component: Home },
+
 ];
 
 const router = new VueRouter({
