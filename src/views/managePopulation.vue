@@ -4,7 +4,13 @@
 
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+        <v-btn
+          @click="entity = {}"
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
           اضافة ساكن
         </v-btn>
       </template>
@@ -90,9 +96,21 @@ export default {
     },
     async saveEntity() {
       try {
-        const row = { _type: "population", ...this.entity };
-        await client.create(row);
-        this.population = [...this.population, this.entity];
+        if (this.entity["_id"]) {
+          let cloneData;
+          cloneData = [...this.population];
+          const row = { _type: "population", ...this.entity };
+          await client.createOrReplace(row);
+          const rowIndex = cloneData.findIndex(
+            (v) => v._id === this.entity._id
+          );
+          cloneData[rowIndex] = this.entity;
+        } else {
+          const row = { _type: "population", ...this.entity };
+          await client.create(row);
+          this.population = [...this.population, this.entity];
+        }
+        this.entity = {};
         this.dialog = false;
       } catch (error) {
         console.log(error);

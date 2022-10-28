@@ -4,7 +4,13 @@
 
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+        <v-btn
+          @click="payment = {}"
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
           اضافة دفعة
         </v-btn>
       </template>
@@ -99,7 +105,7 @@
     <crud-table
       :data="payments"
       :headers="headers"
-      @handleEdit="editPayments"
+      @handleEdit="editPayment"
     />
   </div>
 </template>
@@ -130,16 +136,26 @@ export default {
       this.payments = await client.fetch(query);
       this.isLoading = false;
     },
-    editPayments(item) {
+    editPayment(item) {
       this.payment = item;
       this.dialog = true;
-      console.log(item);
     },
     async savePayment() {
       try {
-        const row = { _type: "payment", ...this.payment };
-        await client.create(row);
-        this.payments = [...this.payments, this.payment];
+        if (this.payment["_id"]) {
+          let cloneData;
+          cloneData = [...this.payments];
+          const row = { _type: "payment", ...this.payment };
+          await client.createOrReplace(row);
+          const rowIndex = cloneData.findIndex(
+            (v) => v._id === this.payment._id
+          );
+          cloneData[rowIndex] = this.payment;
+        } else {
+          const row = { _type: "payment", ...this.payment };
+          await client.create(row);
+          this.payments = [...this.payments, this.payment];
+        }
         this.payment = {};
         this.dialog = false;
       } catch (error) {

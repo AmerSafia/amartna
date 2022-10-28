@@ -14,7 +14,6 @@
         :items="data"
         :search="search"
         v-model="selected"
-        show-select
       >
         <template v-slot:item.actions="{ item }">
           <v-icon class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
@@ -60,12 +59,6 @@ export default {
   methods: {
     editItem(item) {
       this.$emit("handleEdit", item);
-      // this.$emit(handleEdit(item))
-      // handleEdit(item)
-      // console.log(item);
-      // this.editedIndex = this.desserts.indexOf(item);
-      // this.editedItem = Object.assign({}, item);
-      // this.dialog = true;
     },
     deleteItem(item) {
       this.dialogDelete = true;
@@ -80,14 +73,12 @@ export default {
             const filterData = cloneData.filter(
               (ele) => ele._id !== this.deletedItem._id
             );
-            this.data = filterData;
+            this.data = [...filterData];
           })
           .catch((err) => {
             console.error("Delete failed: ", err.message);
           });
       }
-
-      //   this.desserts.splice(this.editedIndex, 1);
       this.closeDelete();
     },
     closeDelete() {
