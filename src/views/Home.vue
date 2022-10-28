@@ -5,8 +5,8 @@
       :key="item.id"
       :to="item.url"
       class="home-card p-0"
+      
     >
-    
       <v-list-item-icon>
         <v-icon color="white">{{ item.icon }}</v-icon>
       </v-list-item-icon>
@@ -34,7 +34,7 @@ export default {
         {
           name: "ادارة السكان",
           url: "managePopulation",
-          icon: "fas fa-file-invoice-dollar",
+          icon: "fas fa-users",
           id: 5,
         },
         {
@@ -46,8 +46,14 @@ export default {
         {
           name: "ادارة المصاريف",
           url: "manageExpenses",
-          icon: "fas fa-file-invoice-dollar",
+          icon: "fas fa-hand-holding-usd",
           id: 7,
+        },
+        {
+          name: "تسجيل الدخول",
+          url: "login",
+          icon: "fas fa-sign-in-alt",
+          id: 8,
         },
       ],
     };
@@ -56,14 +62,13 @@ export default {
 </script>
 <style >
 .home-card {
-  /* text-align: center; */
   background-color: #673ab7;
   margin: 10px 10px;
   border-radius: 10px !important;
   color: #fff !important;
   flex: 1 1 30% !important;
 }
-.home-card .v-list-item__icon{
+.home-card .v-list-item__icon {
   color: #fff !important;
 }
 </style>
