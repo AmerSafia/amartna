@@ -33,7 +33,7 @@ export default {
         {
           name: "ادارة السكان",
           url: "managePopulation",
-          icon: "fas fa-file-invoice-dollar",
+          icon: "fas fa-users",
           id: 5,
         },
         {
@@ -45,8 +45,14 @@ export default {
         {
           name: "ادارة المصاريف",
           url: "manageExpenses",
-          icon: "fas fa-file-invoice-dollar",
+          icon: "fas fa-hand-holding-usd",
           id: 7,
+        },
+        {
+          name: "تسجيل الدخول",
+          url: "login",
+          icon: "fas fa-sign-in-alt",
+          id: 8,
         },
       ],
     };

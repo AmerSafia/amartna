@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="font-weight-black mb-4 text-center">ادارة ساكن</h1>
+    <h1 class="font-weight-black mb-4 text-center">ادارة السكان</h1>
 
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">

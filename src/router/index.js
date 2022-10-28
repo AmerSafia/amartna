@@ -28,7 +28,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Expenses.vue"),
   },
-  
+
   {
     path: "/managePopulation",
     name: "managePayments",
@@ -44,9 +44,14 @@ const routes = [
   {
     path: "/manageExpenses",
     name: "manageExpenses",
-
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/manageExpenses.vue"),
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Login.vue"),
   },
   { path: '(.*)', component: Home },
 
