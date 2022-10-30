@@ -17,6 +17,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
+  
 }
 
 .direction-ltr {
@@ -31,6 +32,6 @@ body {
     grid-template-columns: 1fr;
   }
   .cards div {
-    margin: 5px 0;
+    margin: 2px 0;
   }
 }

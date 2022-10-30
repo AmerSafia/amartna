@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-card class="mx-auto" height="100%" min-height="100vh" width="100%">
+    <v-card class="mx-auto" height="100%" min-height="100vh" width="100%" color="#FFEBC6">
       <v-app-bar color="deep-purple" dark>
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
         <v-toolbar-title>
@@ -8,7 +8,7 @@
         </v-toolbar-title>
       </v-app-bar>
 
-      <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-navigation-drawer color="#FFEBC6" v-model="drawer" absolute temporary>
         <v-list nav dense>
           <v-list-item-group active-class="deep-purple--text text--accent-4 ">
             <div v-for="item of nav" :key="item.id">
@@ -27,8 +27,8 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-      <v-container>
-        <slot> </slot>
+      <v-container >
+        <slot > </slot>
       </v-container>
     </v-card>
   </v-app>

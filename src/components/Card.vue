@@ -1,7 +1,7 @@
 <template>
-    <v-card color="deep-purple" class="card elevation-15" dark>
-      <slot></slot>
-    </v-card>
+  <v-card color="deep-purple darken-4" class="card elevation-15" dark>
+    <slot></slot>
+  </v-card>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-.card{
-      border-radius: 24px 4px!important;
+.card {
+  border-radius: 24px 4px !important;
 }
 </style>

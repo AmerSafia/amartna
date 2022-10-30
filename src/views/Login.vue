@@ -19,6 +19,7 @@
         ></v-text-field>
       </v-flex>
       <v-btn class="mt-4" color="primary" @click="login">تسجيل الدخول</v-btn>
+      {{error}}
     </v-layout>
   </v-container>
 </template>
