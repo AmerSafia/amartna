@@ -34,18 +34,21 @@ export default {
           name: "ادارة السكان",
           url: "managePopulation",
           icon: "fas fa-users",
+          adminPermission: true,
           id: 5,
         },
         {
           name: "ادارة الدفعات",
           url: "managePayments",
           icon: "fas fa-file-invoice-dollar",
+          adminPermission: true,
           id: 6,
         },
         {
           name: "ادارة المصاريف",
           url: "manageExpenses",
           icon: "fas fa-hand-holding-usd",
+          adminPermission: true,
           id: 7,
         },
         {
