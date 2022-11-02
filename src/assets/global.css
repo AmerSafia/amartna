@@ -20,6 +20,7 @@ body {
   
 }
 .backgroundFix{
+  background-size: cover !important;
   background: url('https://cdn.vuetifyjs.com/images/parallax/material.jpg');
 }
 .direction-ltr {
@@ -29,6 +30,7 @@ body {
 .v-toolbar__extension {
   justify-content: space-between !important;
 }
+
 @media screen and (max-width: 600px) {
   .cards {
     grid-template-columns: 1fr;

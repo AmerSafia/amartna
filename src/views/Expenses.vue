@@ -5,9 +5,9 @@
       <Card v-for="item of expense" :key="item.id">
         <v-card-title class="text-h5"> {{ item.name }}</v-card-title>
         <v-card-subtitle>
-          <div>المبلغ: {{ item.amount }} دينار</div>
-          <div>تاريخ : {{ item.date }}</div>
-          <div>التفاصيل: {{ item.description }}</div>
+            <div>المبلغ: {{ item.amount }} دينار</div>
+            <div>تاريخ : {{ item.date }}</div>
+            <div>التفاصيل: {{ item.description }}</div>
         </v-card-subtitle>
       </Card>
     </div>

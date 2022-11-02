@@ -79,7 +79,7 @@
           <v-btn color="blue darken-1" text @click="dialog = false">
             اغلاق
           </v-btn>
-          <v-btn color="primary" dark text @click="saveExpense"> حفظ </v-btn>
+          <v-btn color="primary" dark @click="saveExpense"> حفظ </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

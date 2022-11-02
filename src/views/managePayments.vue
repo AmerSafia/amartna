@@ -22,11 +22,21 @@
           <v-container>
             <v-layout wrap>
               <v-flex md6 class="pr-1">
-                <v-text-field
-                  type="text"
-                  label="الاسم"
+                <v-select
+                  :items="population"
+                  item-text="name"
+                  label="اخترالاسم"
                   v-model="payment.name"
+                  @change="selectedNumApartment"
+                ></v-select>
+              </v-flex>
+              <v-flex md6 class="pr-1">
+                <v-text-field
+                  type="number"
+                  label="رقم الشقة"
+                  v-model.number="payment.numApartment"
                   name="الاسم"
+                  readonly
                 ></v-text-field>
               </v-flex>
               <v-flex md6 class="pr-1">
@@ -65,14 +75,6 @@
                   </v-date-picker>
                 </v-menu>
               </v-flex>
-              <v-flex md6 class="pr-1">
-                <v-text-field
-                  type="number"
-                  label="رقم الشقة"
-                  v-model.number="payment.numApartment"
-                  name="الاسم"
-                ></v-text-field>
-              </v-flex>
 
               <v-flex md6 class="pr-1">
                 <v-text-field
@@ -97,11 +99,10 @@
           <v-btn color="blue darken-1" text @click="dialog = false">
             اغلاق
           </v-btn>
-          <v-btn color="blue darken-1" text @click="savePayment"> حفظ </v-btn>
+          <v-btn color="primary" @click="savePayment"> حفظ </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-
     <crud-table :data="payments" :headers="headers" @handleEdit="editPayment" />
   </div>
 </template>
@@ -122,7 +123,9 @@ export default {
         date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
           .toISOString()
           .substr(0, 10),
+        numApartment: 0,
       },
+      population: [],
     };
   },
   methods: {
@@ -138,6 +141,7 @@ export default {
       this.dialog = true;
     },
     async savePayment() {
+      console.log(this.payment);
       try {
         if (this.payment["_id"]) {
           let cloneData;
@@ -160,9 +164,19 @@ export default {
         this.dialog = false;
       }
     },
+    async getPopulations() {
+      const query = `*[_type=="population"]`;
+      this.population = await client.fetch(query);
+    },
+    selectedNumApartment() {
+      this.payment.numApartment = this.population.find(
+        (item) => item.name == this.payment?.name
+      ).numApartment;
+    },
   },
   async created() {
     await this.getPayments();
+    await this.getPopulations();
   },
   computed: {
     headers() {

@@ -65,7 +65,6 @@
     </v-layout>
     </v-card>
 
-
     <div class="cards">
       <Card v-for="item of payment" :key="item.id">
         <v-card-title class="text-h5"> {{ item.name }}</v-card-title>
