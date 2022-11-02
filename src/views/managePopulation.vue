@@ -94,6 +94,7 @@ export default {
       const query = `*[_type=="population"]`;
       this.population = await client.fetch(query);
     },
+
     async saveEntity() {
       try {
         if (this.entity["_id"]) {

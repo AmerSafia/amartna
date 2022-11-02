@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-card class="mx-auto" height="100%" min-height="100vh" width="100%" color="#FFEBC6">
+    <v-card class="mx-auto backgroundFix" height="100%" min-height="100vh" width="100%" color="#FFEBC6">
       <v-app-bar color="deep-purple" dark>
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
         <v-toolbar-title>
@@ -42,9 +42,6 @@ export default {
   props: {
     nav: { type: Array },
   },
-  created() {
-
-  },
   data: () => ({
     drawer: false,
     store,
@@ -61,4 +58,5 @@ export default {
 .deActive {
   color: #fff;
 }
+
 </style>

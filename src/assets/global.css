@@ -19,7 +19,9 @@ body {
   gap: 0.5rem;
   
 }
-
+.backgroundFix{
+  background: url('https://cdn.vuetifyjs.com/images/parallax/material.jpg');
+}
 .direction-ltr {
   direction: ltr !important;
 }

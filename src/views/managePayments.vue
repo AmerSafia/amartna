@@ -102,11 +102,7 @@
       </v-card>
     </v-dialog>
 
-    <crud-table
-      :data="payments"
-      :headers="headers"
-      @handleEdit="editPayment"
-    />
+    <crud-table :data="payments" :headers="headers" @handleEdit="editPayment" />
   </div>
 </template>
 
@@ -136,6 +132,7 @@ export default {
       this.payments = await client.fetch(query);
       this.isLoading = false;
     },
+
     editPayment(item) {
       this.payment = item;
       this.dialog = true;

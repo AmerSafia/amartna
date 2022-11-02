@@ -1,5 +1,5 @@
 <template>
-  <v-card color="deep-purple darken-4" class="card elevation-15" dark>
+  <v-card color="deep-purple" class="card elevation-15" dark>
     <slot></slot>
   </v-card>
 </template>

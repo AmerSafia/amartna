@@ -30,7 +30,7 @@ const routes = [
 
   {
     path: "/managePopulation",
-    name: "managePayments",
+    name: "managePopulation",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/managePopulation.vue"),
   },
@@ -52,8 +52,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Login.vue"),
   },
-  { path: '(.*)', component: Home },
-
+  {
+    path: '*',
+    name: '404',
+    component: Home,
+  }
 ];
 
 const router = new VueRouter({
