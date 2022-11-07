@@ -30,6 +30,9 @@ body {
 .v-toolbar__extension {
   justify-content: space-between !important;
 }
+h1{
+  color:white
+}
 
 @media screen and (max-width: 600px) {
   .cards {
@@ -37,5 +40,8 @@ body {
   }
   .cards div {
     margin: 2px 0;
+  }
+  .text-overline{
+    margin-top: 45px;
   }
 }

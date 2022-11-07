@@ -141,7 +141,6 @@ export default {
       this.dialog = true;
     },
     async savePayment() {
-      console.log(this.payment);
       try {
         if (this.payment["_id"]) {
           let cloneData;
