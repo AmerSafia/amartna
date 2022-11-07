@@ -69,7 +69,7 @@
               class="card-price-avatar"
               tile
               size="60"
-              color="primary"
+              color="blue darken-4"
             >
               <v-icon color="white"> fas fa-chart-bar </v-icon>
             </v-list-item-avatar>
@@ -98,7 +98,7 @@
               class="card-price-avatar"
               tile
               size="60"
-              color="primary"
+              color="amber darken-1"
             >
               <v-icon color="white"> fa-solid fa-filter-circle-dollar </v-icon>
             </v-list-item-avatar>
