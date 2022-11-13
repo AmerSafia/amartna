@@ -1,22 +1,6 @@
 <template>
   <v-container>
     <v-layout wrap>
-      <v-card v-for="item of nav" class="home-card p-0" :key="item.id">
-        <v-list-item
-          :to="item.url"
-          v-if="!item.adminPermission || store.loggedIn"
-        >
-          <v-list-item-icon>
-            <v-icon color="white">{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title class="bold">
-            {{ item.name }}
-          </v-list-item-title>
-        </v-list-item>
-      </v-card>
-    </v-layout>
-
-    <v-layout wrap>
       <v-flex xs6 md4>
         <v-card class="mx-1 my-4" min-height="170px" outlined>
           <v-list-item three-line>
@@ -33,6 +17,14 @@
                   دينار اردني
                 </v-chip>
               </v-list-item-title>
+              <v-list-item-subtitle>
+                <v-list-item to="/payments" class="details">
+                  للمزيد من التفاصيل 
+                  <span>
+                    اضغط هنا
+                  </span>
+                </v-list-item>
+              </v-list-item-subtitle>
             </v-list-item-content>
 
             <v-list-item-avatar
@@ -63,6 +55,12 @@
                   دينار اردني
                 </v-chip>
               </v-list-item-title>
+              <v-list-item to="/expenses" class="details">
+                  للمزيد من التفاصيل 
+                  <span>
+                    اضغط هنا
+                  </span>
+                </v-list-item>
             </v-list-item-content>
 
             <v-list-item-avatar
@@ -172,18 +170,6 @@ export default {
 };
 </script>
 <style>
-.home-card {
-  background-color: #673ab7 !important;
-  margin: 10px 10px;
-  border-radius: 10px !important;
-  color: #fff !important;
-  flex: 1 1 30% !important;
-}
-
-.home-card .v-list-item__icon,
-.home-card .v-list-item__title {
-  color: #fff !important;
-}
 .v-card:empty {
   display: none;
 }
@@ -194,5 +180,13 @@ export default {
   position: absolute;
   left: 10px;
   top: -28px;
+}
+.details{
+  color: rgba(169, 161, 161, 0.818) !important;
+  padding: 0;
+}
+.details span{
+  padding: 4px;
+  color: #673ab7;
 }
 </style>
