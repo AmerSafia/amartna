@@ -14,7 +14,7 @@
               <v-list-item-title class="text-h5 mb-1">
                 <v-chip label color="primary" class="py-5">
                   {{ TotalPayments }}
-                  دينار اردني
+                  د.أ
                 </v-chip>
               </v-list-item-title>
               <v-list-item-subtitle>
@@ -50,7 +50,7 @@
               <v-list-item-title class="text-h5 mb-1">
                 <v-chip label color="primary" class="py-5">
                   {{ TotalExpense.toFixed(2) }}
-                  دينار اردني
+                  د.أ
                 </v-chip>
               </v-list-item-title>
               <v-list-item to="/expenses" class="details">
@@ -71,7 +71,7 @@
         </v-card>
       </v-flex>
       <v-flex xs12 md6>
-        <v-card class="mx-1 my-4"  outlined>
+        <v-card class="mx-1 my-4" outlined>
           <v-list-item three-line>
             <v-list-item-content class="card-price">
               <div class="text-overline mb-4">
@@ -83,7 +83,7 @@
               <v-list-item-title class="text-h5 mb-1">
                 <v-chip label color="primary" class="py-5">
                   {{ (TotalPayments - TotalExpense).toFixed(2) }}
-                  دينار اردني
+                  د.أ
                 </v-chip>
               </v-list-item-title>
             </v-list-item-content>
@@ -100,7 +100,6 @@
         </v-card>
       </v-flex>
     </v-layout>
-
   </v-container>
 </template>
 
