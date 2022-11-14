@@ -8,7 +8,10 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  border-radius: 0 !important;
+}
+
+:root {
+  --primary: #673AB7;
 }
 body {
   width: 100% !important;
@@ -17,7 +20,6 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
-  
 }
 .backgroundFix{
   background-size: cover !important;
@@ -34,7 +36,29 @@ h1{
   color:white
 }
 
-@media screen and (max-width: 600px) {
+
+.v-card:empty {
+  display: none;
+}
+.card-price {
+  position: relative;
+}
+.card-price-avatar {
+  position: absolute;
+  left: 10px;
+  top: -28px;
+}
+.details {
+  color: rgba(169, 161, 161, 0.818) !important;
+  padding: 0;
+}
+.details span {
+  padding: 4px;
+  color: #673ab7;
+}
+
+
+@media screen and (max-width: 700px) {
   .cards {
     grid-template-columns: 1fr;
   }
@@ -43,5 +67,8 @@ h1{
   }
   .text-overline{
     margin-top: 45px;
+  }
+  .details {
+    font-size: 11px;
   }
 }

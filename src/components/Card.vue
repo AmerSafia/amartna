@@ -1,7 +1,7 @@
 <template>
-  <v-card color="deep-purple" class="card elevation-15" dark>
+  <div class="cards">
     <slot></slot>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -13,8 +13,37 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .card {
-  border-radius: 24px 4px !important;
+  background-color: #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  max-width: 100%;
+  width: auto;
+  min-height: 100px;
 }
+.card h6 {
+  opacity: 0.6;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card h2 {
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+.card-preview {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 10px;
+  min-width: 100px;
+  max-width: 100px;
+}
+.card-info {
+  padding: 20px;
+  position: relative;
+  width: 100%;
+}
+
 </style>

@@ -7,20 +7,14 @@
       width="100%"
       color="#FFEBC6"
     >
-      <v-app-bar color="deep-purple" dark>
+      <v-app-bar color="deep-purple" dark class="style-header">
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
         <v-toolbar-title>
           <v-list-item to="/" active-class="deActive"> عمارتنا </v-list-item>
         </v-toolbar-title>
       </v-app-bar>
 
-      <v-navigation-drawer
-        color="#EEEEEE
-"
-        v-model="drawer"
-        absolute
-        temporary
-      >
+      <v-navigation-drawer color="#EEEEEE" v-model="drawer" absolute temporary>
         <v-list nav dense>
           <v-list-item-group active-class="deep-purple--text text--accent-4 ">
             <div v-for="item of nav" :key="item.id">
@@ -68,5 +62,8 @@ export default {
 }
 .deActive {
   color: #fff;
+}
+.style-header {
+  border-radius: 0 !important;
 }
 </style>

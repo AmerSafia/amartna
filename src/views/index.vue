@@ -1,12 +1,12 @@
 <template>
   <v-container>
     <v-layout wrap>
-      <v-flex xs6 md4>
+      <v-flex xs12 md6>
         <v-card class="mx-1 my-4" min-height="170px" outlined>
           <v-list-item three-line>
             <v-list-item-content class="card-price">
               <div class="text-overline mb-4">
-                المجموع الكلي للمدفوعات حتى تاريخ
+                مجموع المدفوعات حتى تاريخ
                 <div>
                   {{ date }}
                 </div>
@@ -19,10 +19,8 @@
               </v-list-item-title>
               <v-list-item-subtitle>
                 <v-list-item to="/payments" class="details">
-                  للمزيد من التفاصيل 
-                  <span>
-                    اضغط هنا
-                  </span>
+                  للمزيد من التفاصيل
+                  <span> اضغط هنا </span>
                 </v-list-item>
               </v-list-item-subtitle>
             </v-list-item-content>
@@ -39,28 +37,26 @@
         </v-card>
       </v-flex>
 
-      <v-flex xs6 md4>
+      <v-flex xs12 md6>
         <v-card class="mx-1 my-4" min-height="170px" outlined>
           <v-list-item three-line>
             <v-list-item-content class="card-price">
               <div class="text-overline mb-4">
-                المجموع الكلي للمصاريف حتى تاريخ
+                مجموع المصاريف حتى تاريخ
                 <div>
                   {{ date }}
                 </div>
               </div>
               <v-list-item-title class="text-h5 mb-1">
                 <v-chip label color="primary" class="py-5">
-                  {{ TotalExpense }}
+                  {{ TotalExpense.toFixed(2) }}
                   دينار اردني
                 </v-chip>
               </v-list-item-title>
               <v-list-item to="/expenses" class="details">
-                  للمزيد من التفاصيل 
-                  <span>
-                    اضغط هنا
-                  </span>
-                </v-list-item>
+                للمزيد من التفاصيل
+                <span> اضغط هنا </span>
+              </v-list-item>
             </v-list-item-content>
 
             <v-list-item-avatar
@@ -74,8 +70,8 @@
           </v-list-item>
         </v-card>
       </v-flex>
-      <v-flex xs6 md4>
-        <v-card class="mx-1 my-4" min-height="170px" outlined>
+      <v-flex xs12 md6>
+        <v-card class="mx-1 my-4"  outlined>
           <v-list-item three-line>
             <v-list-item-content class="card-price">
               <div class="text-overline mb-4">
@@ -86,7 +82,7 @@
               </div>
               <v-list-item-title class="text-h5 mb-1">
                 <v-chip label color="primary" class="py-5">
-                  {{ TotalPayments - TotalExpense }}
+                  {{ (TotalPayments - TotalExpense).toFixed(2) }}
                   دينار اردني
                 </v-chip>
               </v-list-item-title>
@@ -104,6 +100,7 @@
         </v-card>
       </v-flex>
     </v-layout>
+
   </v-container>
 </template>
 
@@ -115,37 +112,6 @@ export default {
   data() {
     return {
       store,
-      nav: [
-        {
-          name: "سكان العمارة",
-          url: "populations",
-          icon: "far fa-building",
-          id: 1,
-        },
-        { name: "الدفعات", url: "payments", icon: "fas fa-file-alt", id: 2 },
-        { name: "المصاريف", url: "expenses", icon: "mdi-cash-register", id: 3 },
-        {
-          name: "ادارة السكان",
-          url: "managePopulation",
-          icon: "fas fa-users",
-          adminPermission: true,
-          id: 4,
-        },
-        {
-          name: "ادارة الدفعات",
-          url: "managePayments",
-          icon: "fas fa-file-invoice-dollar",
-          adminPermission: true,
-          id: 5,
-        },
-        {
-          name: "ادارة المصاريف",
-          url: "manageExpenses",
-          icon: "fas fa-hand-holding-usd",
-          adminPermission: true,
-          id: 6,
-        },
-      ],
       date: new Date().toLocaleDateString(),
       TotalPayments: 0,
       TotalExpense: 0,
@@ -169,24 +135,3 @@ export default {
   },
 };
 </script>
-<style>
-.v-card:empty {
-  display: none;
-}
-.card-price {
-  position: relative;
-}
-.card-price-avatar {
-  position: absolute;
-  left: 10px;
-  top: -28px;
-}
-.details{
-  color: rgba(169, 161, 161, 0.818) !important;
-  padding: 0;
-}
-.details span{
-  padding: 4px;
-  color: #673ab7;
-}
-</style>

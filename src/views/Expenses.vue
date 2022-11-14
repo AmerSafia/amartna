@@ -1,16 +1,29 @@
 <template>
   <div>
     <h1 class="font-weight-black mb-4 text-center">مصاريف</h1>
-    <div class="cards">
-      <Card v-for="item of expense" :key="item.id">
-        <v-card-title class="text-h5"> {{ item.name }}</v-card-title>
-        <v-card-subtitle>
-            <div>المبلغ: {{ item.amount }} دينار</div>
-            <div>تاريخ : {{ item.date }}</div>
-            <div>التفاصيل: {{ item.description }}</div>
-        </v-card-subtitle>
-      </Card>
-    </div>
+    <Card>
+      <div v-for="item of expense" :key="item.id">
+        <div class="card">
+          <div class="card-preview d-flex flex-column justify-center">
+            <h6>دفعة</h6>
+            <h3 class="text-center">{{ item.name }}</h3>
+          </div>
+          <div class="card-info">
+            <div class="d-flex justify-space-between">
+              <h6 class="align-self-center">{{ item.date }}</h6>
+              <v-chip
+                class="font-weight-bold"
+                color="primary"
+                text-color="white"
+              >
+                {{ item.amount }} دينار
+              </v-chip>
+            </div>
+            <h4 class="mt-1">{{ item.description }}</h4>
+          </div>
+        </div>
+      </div>
+    </Card>
   </div>
 </template>
 

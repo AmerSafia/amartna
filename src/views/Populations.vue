@@ -1,16 +1,23 @@
 <template>
   <div>
     <h1 class="font-weight-black mb-4 text-center">سكان العمارة</h1>
-    <div class="cards">
-      <Card v-for="pay of population" :card="pay" :key="pay.id">
-        <v-card-title class="text-h7 py-2 "> الاسم : {{ pay.name }}</v-card-title>
-        <v-card-subtitle class="my-0 pb-1" >
-          <div>رقم الهاتف : 0{{ pay.phone }}</div>
-          <div>رقم الشقة : {{ pay.numApartment }}</div>
-          <div>التفاصيل: {{ pay.description }}</div>
-        </v-card-subtitle>
-      </Card>
-    </div>
+    <Card>
+      <div class="card" v-for="item of population" :key="item.id">
+        <div class="card-preview d-flex flex-column justify-center">
+          <h4 class="text-center">{{ item.name }}</h4>
+        </div>
+        <div class="card-info">
+          <div class="d-flex justify-space-between">
+            <h6 class="align-self-center">0{{ item.phone }}</h6>
+
+            <v-chip class="font-weight-bold" color="warning" text-color="white">
+              {{ item.numApartment }}
+            </v-chip>
+          </div>
+          <h4 class="mt-1">{{ item.description }}</h4>
+        </div>
+      </div>
+    </Card>
   </div>
 </template>
 
@@ -33,7 +40,11 @@ export default {
   methods: {
     async getPopulations() {
       const query = `*[_type=="population"]`;
-      this.population = await client.fetch(query);
+      const population = await client.fetch(query);
+      this.population = population.sort((a, b) => {
+        if (a.numApartment < b.numApartment) return -1;
+        return a.numApartment > b.numApartment ? 1 : 0;
+      });
     },
   },
 };
