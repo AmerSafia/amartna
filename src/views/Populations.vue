@@ -11,6 +11,7 @@
             <h6 class="align-self-center">0{{ item.phone }}</h6>
 
             <v-chip class="font-weight-bold" color="warning" text-color="white">
+              شقة رقم
               {{ item.numApartment }}
             </v-chip>
           </div>

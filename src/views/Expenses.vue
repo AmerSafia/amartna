@@ -16,7 +16,7 @@
                 color="primary"
                 text-color="white"
               >
-                {{ item.amount }} دينار
+                {{ item.amount }}  د.أ
               </v-chip>
             </div>
             <h4 class="mt-1">{{ item.description }}</h4>
