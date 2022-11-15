@@ -74,8 +74,12 @@
           <div class="d-flex justify-space-between">
             <h6 class="align-self-center">{{ item.date }}</h6>
 
-            <v-chip class="font-weight-bold" color="orange darken-4" text-color="white">
-             {{ item.amount }} د.أ
+            <v-chip
+              class="font-weight-bold"
+              color="orange darken-4"
+              text-color="white"
+            >
+              {{ item.amount }} د.أ
             </v-chip>
           </div>
           <h4 class="mt-1">{{ item.description }}</h4>
@@ -83,7 +87,6 @@
       </div>
     </Card>
   </div>
- 
 </template>
 <script>
 import Card from "../components/Card.vue";
@@ -129,7 +132,6 @@ export default {
         new Date(this.date).getMonth() + 1,
         1
       ).toISOString();
-
       const query = `*[_type=="payment" && dateTime(_createdAt) >= dateTime('${firstDayOfMonth}')&& dateTime(_createdAt) <= dateTime('${lastDateofMonth}')]`;
       this.payment = await client.fetch(query);
     },

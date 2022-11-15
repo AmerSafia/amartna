@@ -135,7 +135,7 @@ export default {
         {
           text: "رقم الشقة",
           value: "numApartment",
-          sortable: false,
+          sortable: true,
         },
         { text: "رقم الهاتف", value: "phone", sortable: false },
         { text: "التفاصيل", value: "description", sortable: false },
