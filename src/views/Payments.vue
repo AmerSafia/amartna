@@ -72,7 +72,7 @@
         </div>
         <div class="card-info">
           <div class="d-flex justify-space-between">
-            <h6 class="align-self-center">0{{ item.date }}</h6>
+            <h6 class="align-self-center">{{ item.date }}</h6>
 
             <v-chip class="font-weight-bold" color="orange darken-4" text-color="white">
              {{ item.amount }} د.أ
