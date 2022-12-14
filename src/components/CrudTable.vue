@@ -26,7 +26,7 @@
         <v-card-title class="text-h5">هل انت متاكد من الحذف ؟</v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
+          <v-btn color="blue darken-1" text @click="closeDelete">الغاء</v-btn>
           <v-btn color="blue darken-1" text @click="deleteItemConfirm">
             OK
           </v-btn>

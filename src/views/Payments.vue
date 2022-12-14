@@ -118,7 +118,13 @@ export default {
   methods: {
     async getPayments() {
       const query = `*[_type=="payment"]`;
-      this.payment = await client.fetch(query);
+      const data = await client.fetch(query);
+      this.payment = data.sort((x) => {
+        return x.date;
+      });
+      data.sort(
+        (d1, d2) => new Date(d2.date).getTime() - new Date(d1.date).getTime()
+      );
       this.NamePayments = [...this.payment];
     },
     async getPaymentsByName() {
