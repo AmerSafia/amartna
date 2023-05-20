@@ -16,7 +16,7 @@
                 color="primary"
                 text-color="white"
               >
-                {{ item.amount }}  د.أ
+                {{ item.amount }} د.أ
               </v-chip>
             </div>
             <h4 class="mt-1">{{ item.description }}</h4>
@@ -31,7 +31,7 @@
 import Card from "../components/Card.vue";
 import { client } from "../lib/client";
 export default {
-  name: "",
+  name: "Expense",
   components: {
     Card,
   },
@@ -46,7 +46,13 @@ export default {
   methods: {
     async getExpense() {
       const query = `*[_type=="expense"]`;
-      this.expense = await client.fetch(query);
+      const data = await client.fetch(query);
+      this.expense = data.sort((x) => {
+        return x.date;
+      });
+      data.sort(
+        (d1, d2) => new Date(d2.date).getTime() - new Date(d1.date).getTime()
+      );
     },
   },
 };
