@@ -12,7 +12,7 @@
     />
 
     <q-dialog v-model="dialog" persistent>
-      <q-card dark style="min-width: 500px; background: #1A2332; border-radius: 16px;">
+      <q-card dark style="background: #1A2332; border-radius: 16px;">
         <q-card-section>
           <div class="text-h6">{{ payment._id ? 'تعديل دفعة' : 'اضافة دفعة' }}</div>
         </q-card-section>
